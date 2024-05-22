@@ -6,77 +6,84 @@
 // logic should evaluate both number
 // logic determines who won and displays a message
 
-function getRandomNumber () {
-    return Math.floor(Math.random() * 3 + 1);
-}
-
 function getComputerChoice () {
 
-    switch(getRandomNumber()) {
-        
-        case 1:
-            console.log("rock");
-            break
+    const number = Math.floor(Math.random() * 3 + 1);
 
-        case 2:
-            console.log("paper");
-            break
+    switch (number) {
 
-        case 3:
-            console.log("scissors");
-            break
+        case 1: // console.log("Computer select rock");
+            return 1;
+        case 2: // console.log("Computer select paper");
+            return 2;
+        case 3: // console.log("Computer select scissors");
+            return 3;
     }
 }
 
 function getHumanChoice () {
 
-    let human = prompt("Rock? Paper? Scissors?").toLowerCase();
+    let humanAnswer = prompt("Type 'Rock', 'Paper' or 'Scissors'.");
+    humanAnswer = humanAnswer.toLowerCase();
     
-    if (human == "Rock") {
-        return rock
-    }
-
-    if (human == "Paper") {
-        return paper
-    }
-
-    if (human == "Scissors") {
-        return scissors
+    if (humanAnswer == "rock") { 
+        // console.log("Human select rock");
+        return 1
+    } else if (humanAnswer == "paper") {
+        // console.log("Human select paper");
+        return 2
+    } else if (humanAnswer == "scissors") {
+        // console.log("Human select scissors");
+        return 3
+    } else {
+        alert("You can only type 'Rock', 'Paper or 'Scissors'.");
     }
 }
 
-function playRound (humanChoice, computerChoice) {
+function evaluateResult (humanChoice, computerChoice) {
     
-    switch (getComputerChoice()) {
-        case rock:
-            if (rock == 1) {
-                alert("Draw")
-            } else if (rock == 2) {
-                alert("The computer won.")
-            } else {
-                alert("You won!")
-            }
-            break
-
-        case paper:
-            if (paper == 2) {
-                alert("Draw")
-            } else if (paper == 3) {
-                alert("The computer won.")
-            } else {
-                alert("You won!")
-            }
-            break
-
-        case scissors:
-            if (scissors == 3) {
-                alert("Draw")
-            } else if (scissor == 1) {
-                alert("The computer won.")
-            } else {
-                alert("You won!")
-            }
-            break
-
+    console.log("Computers choice: " + computerChoice);
+    console.log("Humans choice: " + humanChoice);
+    
+    if (humanChoice == computerChoice) {
+        console.log("Draw");
     }
+    else {
+        switch (computerChoice) {
+            case 1: // Computer selects rock 
+                if(humanChoice == 2){  // Human selects paper 
+                    console.log("Human won");
+                }
+                else if(humanChoice == 3){ // Human selects scissors 
+                    console.log("Computer won");
+                }
+                break
+            case 2: // Computer selects paper
+                if(humanChoice == 1){  // Human selects rock 
+                    console.log("Computer won");
+                }
+                else if(humanChoice == 3){ // Human selects scissors 
+                    console.log("Human won");
+                }
+                break
+            case 3: // Computer selects scissors
+                if(humanChoice == 2){  // Human selects paper 
+                    console.log("Computer won");
+                }
+                else if(humanChoice == 1){ // Human selects rock 
+                    console.log("Human won");
+                }
+                break
+            default:
+                console.log("Invalid Selections, hu:" + humanChoice + " com: " + computerChoice);
+                break
+
+        }
+    }
+}
+
+function game(){
+    let compCho = getComputerChoice();
+    let humCho = getHumanChoice();
+    evaluateResult(humCho, compCho);
 }

@@ -82,8 +82,17 @@ function evaluateResult (humanChoice, computerChoice) {
     }
 }
 
-function game(){
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound () {
+    
     let compCho = getComputerChoice();
     let humCho = getHumanChoice();
     evaluateResult(humCho, compCho);
+
+}
+
+function playGame () {
+    
 }

@@ -7,10 +7,11 @@
 // change string to lowercase
 // change string to a number between 1-3
 // evaluate the results
-// logic chooses winner
+// logic chooses round winner
 // display a winner message
 // count the scores after every round
-// restart the game
+// play 5 rounds
+// display a game winner message
 
 alert ("This is a 'Rock, Paper, Scissors' game played on console. If you are using chrome, you can press F12 to open console. Then, type 'playGame()' to start the game.")
 
@@ -27,6 +28,7 @@ function getComputerChoice () {
         case 3: // pc choose scissors
             return 3
     }
+    
 }
 
 function getHumanChoice () {
@@ -43,6 +45,7 @@ function getHumanChoice () {
     } else { 
         alert("You can only type 'Rock', 'Paper' or 'Scissors'. Type 'playRound' to play again. ") // invalid choice
     }
+
 }
 
 function evaluateResult (human, computer) {
@@ -53,53 +56,55 @@ function evaluateResult (human, computer) {
         computerScore += 1; // computer score +1
         return "Computer chooses rock. Its a draw!";
     } else {
+        
         switch (computer) {
 
             case 1: // computer chooses rock
                 if (human == 2) {
-                    console.log("Computer chooses rock. Paper beats rock. You won!");
+                    console.log("Computer chooses rock. Paper beats rock. You won this round!");
                     humanScore +=1; // human score +1
-                    return "Computer chooses rock. Paper beats rock. You won!";
+                    return "Computer chooses rock. Paper beats rock. You won this round!";
                 } else if (human == 3) {
-                    console.log("Computers chooses rock. Rock beats scissors. You lose!");
+                    console.log("Computers chooses rock. Rock beats scissors. You lost this round!");
                     computerScore += 1; // computer score +1
-                    return "Computers chooses rock. Rock beats scissors. You lose!";
+                    return "Computers chooses rock. Rock beats scissors. You lost this round!";
                 }
                 break
             case 2: // computer chooses paper
                 if (human == 1) {
-                    console.log("Computer chooses paper. Paper beats rock. You lose!");
+                    console.log("Computer chooses paper. Paper beats rock. You lost this round!");
                     computerScore += 1; // computer score +1
-                    return "Computer chooses paper. Paper beats rock. You lose!";
+                    return "Computer chooses paper. Paper beats rock. You lost this round!";
                 } else if (human == 3) {
-                    console.log("Computer chooses paper. Scissors beats paper. You won!");
+                    console.log("Computer chooses paper. Scissors beats paper. You won this round!");
                     humanScore += 1; // human score +1
-                    return "Computer chooses paper. Scissors beats paper. You won!";
+                    return "Computer chooses paper. Scissors beats paper. You won this round!";
                 }
                 break
             case 3: // computer chooses scissors
                 if (human == 1) {
-                    console.log("Computer chooses scissors. Rock beats scissors. You won!");
+                    console.log("Computer chooses scissors. Rock beats scissors. You won this round!");
                     humanScore += 1; // human score +1
-                    return "Computer chooses scissors. Rock beats scissors. You won!";
+                    return "Computer chooses scissors. Rock beats scissors. You won this round!";
                 } else if (human == 2) {
-                    console.log("Computer chooses scissors. Scissors beats paper. You lose!");
+                    console.log("Computer chooses scissors. Scissors beats paper. You lost this round!");
                     computerScore += 1; // computer score +1
-                    return "Computer chooses scissors. Scissors beats paper. You lose!";
+                    return "Computer chooses scissors. Scissors beats paper. You lost this round!";
                 }
                 break
             default:
                 console.log("Invalid choice")
         }
+
     }
+
 }
 
 function playRound() {
     
     let humCho = getHumanChoice(); // get human choice
     let comCho = getComputerChoice(); // get computer choice
-    evaluateResult (humCho, comCho); // evaluate results
-    
+    evaluateResult (humCho, comCho); // evaluate results 
 
 }
 
@@ -108,7 +113,7 @@ let computerScore = 0;
 
 function playGame () {
     
-    for (let i = 0; i < 5; i++) { // play 1 round until one of the scores reaches 5 or both scores reaches 3
+    for (let i = 0; i < 5; i++) { // play 5 round
         console.log(playRound()); // play 1 round
         console.log(`Your score: ${humanScore}`); // log human score
         console.log(`Computer score: ${computerScore}`); // log computer score
@@ -126,4 +131,5 @@ function winner () {
     } else {
         console.log("Wow, its a tie!") // log tie
     }
+
 }

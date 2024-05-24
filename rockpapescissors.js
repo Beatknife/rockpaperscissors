@@ -12,7 +12,7 @@
 // count the scores after every round
 // restart the game
 
-alert ("Type 'playRound()' to start the game.")
+alert ("This is a 'Rock, Paper, Scissors' game played on console. If you are using chrome, you can press F12 to open console. Then, type 'playGame()' to start the game.")
 
 function getComputerChoice () {
     
@@ -47,10 +47,10 @@ function getHumanChoice () {
 
 function evaluateResult (human, computer) {
 
-    if (human == computer) {
+    if (human == computer) { // if both chooses same choice its a draw
         console.log("Computer chooses rock. Its a draw!");
-        humanScore += 1;
-        computerScore += 1;
+        humanScore += 1; // human score +1
+        computerScore += 1; // computer score +1
         return "Computer chooses rock. Its a draw!";
     } else {
         switch (computer) {
@@ -58,33 +58,33 @@ function evaluateResult (human, computer) {
             case 1: // computer chooses rock
                 if (human == 2) {
                     console.log("Computer chooses rock. Paper beats rock. You won!");
-                    humanScore +=1;
+                    humanScore +=1; // human score +1
                     return "Computer chooses rock. Paper beats rock. You won!";
                 } else if (human == 3) {
                     console.log("Computers chooses rock. Rock beats scissors. You lose!");
-                    computerScore += 1;
+                    computerScore += 1; // computer score +1
                     return "Computers chooses rock. Rock beats scissors. You lose!";
                 }
                 break
             case 2: // computer chooses paper
                 if (human == 1) {
                     console.log("Computer chooses paper. Paper beats rock. You lose!");
-                    computerScore += 1;
+                    computerScore += 1; // computer score +1
                     return "Computer chooses paper. Paper beats rock. You lose!";
                 } else if (human == 3) {
                     console.log("Computer chooses paper. Scissors beats paper. You won!");
-                    humanScore += 1;
+                    humanScore += 1; // human score +1
                     return "Computer chooses paper. Scissors beats paper. You won!";
                 }
                 break
             case 3: // computer chooses scissors
                 if (human == 1) {
                     console.log("Computer chooses scissors. Rock beats scissors. You won!");
-                    humanScore += 1;
+                    humanScore += 1; // human score +1
                     return "Computer chooses scissors. Rock beats scissors. You won!";
                 } else if (human == 2) {
                     console.log("Computer chooses scissors. Scissors beats paper. You lose!");
-                    computerScore += 1;
+                    computerScore += 1; // computer score +1
                     return "Computer chooses scissors. Scissors beats paper. You lose!";
                 }
                 break
@@ -99,6 +99,7 @@ function playRound() {
     let humCho = getHumanChoice(); // get human choice
     let comCho = getComputerChoice(); // get computer choice
     evaluateResult (humCho, comCho); // evaluate results
+    
 
 }
 
@@ -107,10 +108,10 @@ let computerScore = 0;
 
 function playGame () {
     
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound());
-        console.log(`Your score: ${humanScore}`);
-        console.log(`Computer score: ${computerScore}`);
+    for (let i = 0; i < 5; i++) { // play 1 round until one of the scores reaches 5 or both scores reaches 3
+        console.log(playRound()); // play 1 round
+        console.log(`Your score: ${humanScore}`); // log human score
+        console.log(`Computer score: ${computerScore}`); // log computer score
     }
     winner();
 
@@ -119,10 +120,10 @@ function playGame () {
 function winner () {
 
     if (computerScore > humanScore) {
-        console.log("The computer won. Better luck next time!") 
+        console.log("The computer won. Better luck next time!") // log computer won 
     } else if (computerScore < humanScore) {
-        console.log("You won! Congratulations!")
+        console.log("You won! Congratulations!") // log human won
     } else {
-        console.log("Wow, its a tie!")
+        console.log("Wow, its a tie!") // log tie
     }
 }

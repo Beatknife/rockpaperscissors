@@ -13,7 +13,7 @@
 // play 5 rounds
 // display a game winner message
 
-alert ("This is a 'Rock, Paper, Scissors' game played on console. If you are using chrome, you can press F12 to open console. Then, type 'playGame()' to start the game.")
+alert ("This is a 'Rock, Paper, Scissors' game played on console. If you are using chrome, you can press F12 to open console. Then, type 'playGame()' to start the game. You will play total of 5 rounds.")
 
 function getComputerChoice () {
     

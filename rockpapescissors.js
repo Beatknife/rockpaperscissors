@@ -41,7 +41,7 @@ function getHumanChoice () {
     } else if (humanAnswer == "paper") {
         return 2 // human choose paper
     } else if (humanAnswer == "scissors") {
-        return 3 // human choose scissors
+        return 3 // human choose scissors 
     } else { 
         alert("You can only type 'Rock', 'Paper' or 'Scissors'. Type 'playRound' to play again. ") // invalid choice
     }

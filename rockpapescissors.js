@@ -34,7 +34,9 @@ function getComputerChoice () {
 function getHumanChoice () {
 
     let humanAnswer = prompt("Type 'Rock', 'Paper' or 'Scissors'."); // ask humans choice
-    humanAnswer = humanAnswer.toLowerCase(); // change input to lowercase
+
+    if(humanAnswer != null)
+        humanAnswer = humanAnswer.toLowerCase(); // change input to lowercase
 
     if (humanAnswer == "rock") {
         return 1 // human choose rock
@@ -44,6 +46,7 @@ function getHumanChoice () {
         return 3 // human choose scissors 
     } else { 
         alert("You can only type 'Rock', 'Paper' or 'Scissors'. Type 'playRound' to play again. ") // invalid choice
+        return 4
     }
 
 }
@@ -93,7 +96,7 @@ function evaluateResult (human, computer) {
                 }
                 break
             default:
-                console.log("Invalid choice")
+                console.log("Invalid choice.")
         }
 
     }
@@ -103,6 +106,9 @@ function evaluateResult (human, computer) {
 function playRound() {
     
     let humCho = getHumanChoice(); // get human choice
+    if(humCho == 4)
+        return false
+
     let comCho = getComputerChoice(); // get computer choice
     evaluateResult (humCho, comCho); // evaluate results 
 

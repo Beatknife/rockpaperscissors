@@ -35,7 +35,7 @@ function getHumanChoice () {
 
     let humanAnswer = prompt("Type 'Rock', 'Paper' or 'Scissors'."); // ask humans choice
 
-    if(humanAnswer != null)
+    if(humanAnswer != null) // null check
         humanAnswer = humanAnswer.toLowerCase(); // change input to lowercase
 
     if (humanAnswer == "rock") {
@@ -106,6 +106,7 @@ function evaluateResult (human, computer) {
 function playRound() {
     
     let humCho = getHumanChoice(); // get human choice
+    
     if(humCho == 4)
         return false
 
@@ -120,7 +121,7 @@ let computerScore = 0;
 function playGame () {
     
     for (let i = 0; i < 5; i++) { // play 5 round
-        console.log(playRound()); // play 1 round
+        console.log(playRound()); // log playRound result
         console.log(`Your score: ${humanScore}`); // log human score
         console.log(`Computer score: ${computerScore}`); // log computer score
     }

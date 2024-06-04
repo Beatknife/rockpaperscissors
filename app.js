@@ -13,11 +13,13 @@
 // play 5 rounds
 // display a game winner message
 
-alert ("This is a 'Rock, Paper, Scissors' game played on console. If you are using chrome, you can press F12 to open console. Then, type 'playGame()' to start the game. You will play total of 5 rounds.")
+alert ("Welcome to my Rock-Paper-Scissors game. You can play this game with buttons or directly from console. If you are using chrome, you can press F12 to open console. Then, type 'playGame()' to start the game. You will play total of 5 rounds.")
+
+// play game through console
 
 function getComputerChoice () {
     
-    const number = Math.floor(Math.random() * 3 + 1); // pc choose random number
+    const number = Math.floor(Math.random() * 3) + 1; // pc choose random number
     
     switch (number) {
         
@@ -140,3 +142,92 @@ function winner () {
     }
 
 }
+
+// play game with buttons
+
+const playerText = document.querySelector("#playerText");
+const computerText = document.querySelector("#computerText");
+const resultText = document.querySelector("#resultText");
+
+const choiceBtns = document.querySelectorAll(".choiceBtn");
+
+const playerScoreDisplay = document.querySelector("#playerScoreDisplay");
+const computerScoreDisplay = document.querySelector("#computerScoreDisplay");
+
+let playerScore = 0;
+let compScore = 0;
+let player;
+let computer;
+let result;
+
+choiceBtns.forEach(button => button.addEventListener("click", () => {
+
+    player = button.textContent;
+    computerTurn();
+    playerText.textContent = `Player: ${player}`;
+    computerText.textContent = `Computer: ${computer}`;
+    resultText.textContent = checkWinner();
+    playerScoreDisplay.textContent = playerScore;
+    computerScoreDisplay.textContent = compScore;
+    winnerDisplay();
+}));
+
+function computerTurn(){
+
+    const randNum = Math.floor(Math.random() * 3) + 1;
+
+    switch(randNum){
+      case 1:
+        computer = "ROCK";
+        break;
+      case 2:
+        computer = "PAPER";
+        break;
+      case 3:
+        computer = "SCISSORS";
+        break;
+    }
+}
+
+function checkWinner(){
+    if(player == computer){
+      return "Draw!";
+    } 
+    else {
+        switch(computer) {
+            case "ROCK":
+                if (player == "PAPER") {
+                    playerScore++;
+                    return "You Win!"
+                } else if (player == "SCISSORS") {
+                    compScore++;
+                    return "You Lose!"
+                }
+            case "PAPER":
+                if (player == "SCISSORS") {
+                    playerScore++;
+                    return "You Win!"
+                } else if (player == "ROCK") {
+                    compScore++;
+                    return "You Lose!"
+                }
+            case "SCISSORS":
+                if (player == "ROCK") {
+                    playerScore++;
+                    return "You Win!"
+                } else if (player == "PAPER") {
+                    compScore++;
+                    return "You Lose!"
+                }
+        }
+    }
+}
+
+function winnerDisplay() {
+    if ((playerScore > compScore) && playerScore == 5) {
+        alert("You won the game!")
+    }
+    else if ((compScore > playerScore) && compScore == 5) {
+        alert("You lost the game!")
+    }
+} 

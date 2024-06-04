@@ -224,14 +224,15 @@ function checkWinner(){
 }
 
 function winnerDisplay() {
-    if ((playerScore > compScore) && playerScore == 5) {
+    if ((playerScore > compScore) && playerScore > 5) {
+        playerScore = 0;
+        compScore = 0;
         alert("You won the game!")
-        playerScore = 0;
-        compScore = 0;
+  
     }
-    else if ((compScore > playerScore) && compScore == 5) {
-        alert("You lost the game!")
+    else if ((compScore > playerScore) && compScore > 5) {
         playerScore = 0;
         compScore = 0;
+        alert("You lost the game!")
     }
 } 
